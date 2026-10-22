@@ -1,6 +1,6 @@
 ﻿namespace StudentStudyTracker.Domain.Entities
 {
-    internal class StudentLessonProgress
+    public class StudentLessonProgress
     {
         public int Id { get; set; }
         public string StudentId { get; set; } = null!; // Foreign key to Student

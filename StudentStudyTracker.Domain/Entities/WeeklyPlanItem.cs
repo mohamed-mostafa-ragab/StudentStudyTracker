@@ -15,7 +15,7 @@ namespace StudentStudyTracker.Domain.Entities
         public DateOnly DueDate { get; set; }
         public DateTime? CompletedAt { get; set; }
         public int DurationInMinutes { get; set; }
-        public string Description { get; set; } = null!;
+        public string? Description { get; set; } 
         public WeeklyPlanItemType Type { get; set; }
     }
 }
