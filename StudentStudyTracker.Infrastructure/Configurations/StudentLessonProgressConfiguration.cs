@@ -9,7 +9,7 @@ namespace StudentStudyTracker.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<StudentLessonProgress> builder)
         {
-            builder.HasKey(slp => new { slp.StudentId, slp.LessonId });
+            builder.HasIndex(slp => new { slp.StudentId, slp.LessonId }).IsUnique();
             builder.Property(slp=>slp.StudentId)
                 .IsRequired()
                 .HasMaxLength(450);
