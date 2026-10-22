@@ -7,6 +7,6 @@ namespace StudentStudyTracker.Domain.Enums
     public enum WeeklyPlanItemType
     {
         NewLesson=1,
-        Revision = 2,
+        Review = 2,
     }
 }

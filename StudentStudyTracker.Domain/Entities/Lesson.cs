@@ -12,7 +12,7 @@ namespace StudentStudyTracker.Domain.Entities
         public int ChapterId { get; set; }//Foreign key to Chapter
         public int DisplayOrder { get; set; }
         public Chapter Chapter { get; set; } = null!;
-        ICollection<StudentLessonProgress> StudentLessonProgresses { get; set; } = new HashSet<StudentLessonProgress>();
+        public ICollection<StudentLessonProgress> StudentLessonProgresses { get; set; } = new HashSet<StudentLessonProgress>();
 
     }
 }

@@ -1,4 +1,6 @@
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
+using StudentStudyTracker.Infrastructure;
 namespace StudentStudyTracker.API
 {
     public class Program
@@ -10,6 +12,7 @@ namespace StudentStudyTracker.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddInfrastructure(builder.Configuration);
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
