@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using StudentStudyTracker.API.Middleware;
 using StudentStudyTracker.Infrastructure;
 using StudentStudyTracker.Infrastructure.Identity;
+using System.Text;
 namespace StudentStudyTracker.API
 {
     public class Program
@@ -12,10 +16,29 @@ namespace StudentStudyTracker.API
 
             builder.Services.AddControllers();
             builder.Services.AddInfrastructure(builder.Configuration);
+            var jwt = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()!;
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = jwt.Issuer,
+                        ValidAudience = jwt.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key))
+                    };
+                });
+
+            builder.Services.AddAuthorization();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             await app.Services.SeedIdentityAsync();
 
             // Configure the HTTP request pipeline.
@@ -27,6 +50,7 @@ namespace StudentStudyTracker.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
 
             app.MapControllers();

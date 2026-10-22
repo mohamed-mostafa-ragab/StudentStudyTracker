@@ -17,11 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Middleware\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\StudentStudyTracker.Infrastructure\StudentStudyTracker.Infrastructure.csproj" />
   </ItemGroup>
 

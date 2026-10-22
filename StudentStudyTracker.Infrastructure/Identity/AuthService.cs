@@ -65,7 +65,7 @@ public class AuthService : IAuthService
         };
         claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
 
-        var expires = DateTime.UtcNow.AddMinutes(_jwt.ExpiryMinutesDurationInMinutes);
+        var expires = DateTime.UtcNow.AddMinutes(_jwt.ExpiryMinutes);
 
         var descriptor = new SecurityTokenDescriptor
         {
