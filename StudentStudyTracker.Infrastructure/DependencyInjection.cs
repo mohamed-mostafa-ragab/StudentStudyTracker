@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StudentStudyTracker.Application.Interfaces;
 using StudentStudyTracker.Infrastructure.Identity;
 using StudentStudyTracker.Infrastructure.Persistence;
+using StudentStudyTracker.Infrastructure.Services;
 
 
 namespace StudentStudyTracker.Infrastructure
@@ -22,7 +23,7 @@ namespace StudentStudyTracker.Infrastructure
                 .AddEntityFrameworkStores<AppDbContext>();
             services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
             services.AddScoped<IAuthService, AuthService>();
-
+            services.AddScoped<IYearLevelService, YearLevelService>();
             return services;
         }
     }
