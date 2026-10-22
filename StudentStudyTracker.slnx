@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="StudentStudyTracker.API/StudentStudyTracker.API.csproj" />
+  <Project Path="StudentStudyTracker.Application/StudentStudyTracker.Application.csproj" />
+  <Project Path="StudentStudyTracker.Domain/StudentStudyTracker.Domain.csproj" />
+  <Project Path="StudentStudyTracker.Infrastructure/StudentStudyTracker.Infrastructure.csproj" />
+</Solution>
