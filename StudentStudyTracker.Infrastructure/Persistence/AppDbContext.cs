@@ -5,7 +5,7 @@ using StudentStudyTracker.Infrastructure.Identity;
 
 namespace StudentStudyTracker.Infrastructure.Persistence
 {
-    internal class AppDbContext: IdentityDbContext<ApplicationUser>
+    public class AppDbContext: IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
