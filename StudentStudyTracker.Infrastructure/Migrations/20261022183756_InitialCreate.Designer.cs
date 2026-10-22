@@ -12,8 +12,8 @@ using StudentStudyTracker.Infrastructure.Persistence;
 namespace StudentStudyTracker.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261022171738_InitCreate")]
-    partial class InitCreate
+    [Migration("20261022183756_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -176,7 +176,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("academicYearLevels");
+                    b.ToTable("AcademicYearLevels");
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.Chapter", b =>
@@ -239,12 +239,11 @@ namespace StudentStudyTracker.Infrastructure.Migrations
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.StudentLessonProgress", b =>
                 {
-                    b.Property<string>("StudentId")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("LessonId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -258,15 +257,23 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                     b.Property<bool>("HasStudied")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("LessonId")
                         .HasColumnType("int");
+
+                    b.Property<string>("StudentId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("StudentId", "LessonId");
+                    b.HasKey("Id");
 
                     b.HasIndex("LessonId");
+
+                    b.HasIndex("StudentId", "LessonId")
+                        .IsUnique();
 
                     b.ToTable("StudentLessonProgresses");
                 });

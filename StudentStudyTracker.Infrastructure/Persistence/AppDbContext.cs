@@ -15,7 +15,7 @@ namespace StudentStudyTracker.Infrastructure.Persistence
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
-        public DbSet<AcademicYearLevel> academicYearLevels { get; set; }
+        public DbSet<AcademicYearLevel> AcademicYearLevels { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Lesson> Lessons { get; set; }

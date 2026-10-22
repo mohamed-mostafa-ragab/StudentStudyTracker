@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace StudentStudyTracker.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "academicYearLevels",
+                name: "AcademicYearLevels",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_academicYearLevels", x => x.Id);
+                    table.PrimaryKey("PK_AcademicYearLevels", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,9 +80,9 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Subjects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Subjects_academicYearLevels_AcademicYearLevelId",
+                        name: "FK_Subjects_AcademicYearLevels_AcademicYearLevelId",
                         column: x => x.AcademicYearLevelId,
-                        principalTable: "academicYearLevels",
+                        principalTable: "AcademicYearLevels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -262,9 +262,10 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                 name: "StudentLessonProgresses",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     LessonId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false),
                     HasAttended = table.Column<bool>(type: "bit", nullable: false),
                     HasStudied = table.Column<bool>(type: "bit", nullable: false),
                     HasCompletedExercises = table.Column<bool>(type: "bit", nullable: false),
@@ -273,7 +274,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentLessonProgresses", x => new { x.StudentId, x.LessonId });
+                    table.PrimaryKey("PK_StudentLessonProgresses", x => x.Id);
                     table.ForeignKey(
                         name: "FK_StudentLessonProgresses_AspNetUsers_StudentId",
                         column: x => x.StudentId,
@@ -374,6 +375,12 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                 column: "LessonId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_StudentLessonProgresses_StudentId_LessonId",
+                table: "StudentLessonProgresses",
+                columns: new[] { "StudentId", "LessonId" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Subjects_AcademicYearLevelId",
                 table: "Subjects",
                 column: "AcademicYearLevelId");
@@ -439,7 +446,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                 name: "Subjects");
 
             migrationBuilder.DropTable(
-                name: "academicYearLevels");
+                name: "AcademicYearLevels");
         }
     }
 }

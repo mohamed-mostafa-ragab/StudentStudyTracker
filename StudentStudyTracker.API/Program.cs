@@ -1,11 +1,10 @@
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-
 using StudentStudyTracker.Infrastructure;
+using StudentStudyTracker.Infrastructure.Identity;
 namespace StudentStudyTracker.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +16,7 @@ namespace StudentStudyTracker.API
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
+            await app.Services.SeedIdentityAsync();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
