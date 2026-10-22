@@ -2,11 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudentStudyTracker.Application.Interfaces;
 using StudentStudyTracker.Infrastructure.Identity;
 using StudentStudyTracker.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace StudentStudyTracker.Infrastructure
 {
@@ -21,6 +20,8 @@ namespace StudentStudyTracker.Infrastructure
             services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
+            services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }

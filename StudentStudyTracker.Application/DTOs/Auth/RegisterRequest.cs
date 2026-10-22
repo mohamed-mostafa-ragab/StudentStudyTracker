@@ -5,11 +5,11 @@ namespace StudentStudyTracker.Application.DTOs.Auth;
 public class RegisterRequest
 {
     [Required, MaxLength(100)]
-    public string FullName { get; set; } = null!;
+    public required string FullName { get; set; } 
 
     [Required, EmailAddress]
-    public string Email { get; set; } = null!;
+    public required string Email { get; set; } 
 
     [Required, MinLength(8)]
-    public string Password { get; set; } = null!;
+    public required string Password { get; set; } 
 }
