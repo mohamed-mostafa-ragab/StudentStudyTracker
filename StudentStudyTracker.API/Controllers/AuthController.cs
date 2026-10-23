@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using StudentStudyTracker.API.Extensions;
 using StudentStudyTracker.Application.DTOs.Auth;
 using StudentStudyTracker.Application.Interfaces;
 using System.Security.Claims;
@@ -30,6 +31,13 @@ namespace StudentStudyTracker.API.Controllers
             var roles = User.FindAll(ClaimTypes.Role).Select(c => c.Value);
 
             return Ok(new { id, email, roles });
+        }
+        [Authorize]
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequest request)
+        {
+            await _authService.ChangePasswordAsync(User.GetUserId(), request);
+            return NoContent();
         }
     }
 }

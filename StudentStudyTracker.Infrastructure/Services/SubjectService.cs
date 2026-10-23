@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentStudyTracker.Application.DTOs.Subject;
 using StudentStudyTracker.Application.Exceptions;
 using StudentStudyTracker.Domain.Entities;
 using StudentStudyTracker.Infrastructure.Persistence;
-
+using StudentStudyTracker.Application.Interfaces;
+using StudentStudyTracker.Application.DTOs.Curriculum;
+using StudentStudyTracker.Application.DTOs.Subject;
 namespace StudentStudyTracker.Infrastructure.Services
 {
     internal class SubjectService(AppDbContext db) : ISubjectService

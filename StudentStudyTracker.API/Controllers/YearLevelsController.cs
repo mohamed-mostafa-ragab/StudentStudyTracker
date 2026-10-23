@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using StudentStudyTracker.Application.DTOs.Curriculum;
+using StudentStudyTracker.Application.DTOs.Curriculum.YearLevel;
 using StudentStudyTracker.Application.Interfaces;
 
 namespace StudentStudyTracker.API.Controllers;

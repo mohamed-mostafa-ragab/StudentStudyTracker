@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentStudyTracker.Application.DTOs.Curriculum;
+using StudentStudyTracker.Application.DTOs.Curriculum.YearLevel;
 using StudentStudyTracker.Application.Exceptions;
 using StudentStudyTracker.Application.Interfaces;
 using StudentStudyTracker.Domain.Entities;

@@ -47,10 +47,27 @@ public class AuthService : IAuthService
     {
         var user = await _userManager.FindByEmailAsync(request.Email);
 
-        if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
+        if (user is null || await _userManager.IsLockedOutAsync(user))
             throw new UnauthorizedException("Invalid email or password.");
 
+        if (!await _userManager.CheckPasswordAsync(user, request.Password))
+        {
+            await _userManager.AccessFailedAsync(user);
+            throw new UnauthorizedException("Invalid email or password.");
+        }
+
+        await _userManager.ResetAccessFailedCountAsync(user);
         return await BuildResponseAsync(user);
+    }
+
+    public async Task ChangePasswordAsync(string userId, ChangePasswordRequest request)
+    {
+        var user = await _userManager.FindByIdAsync(userId)
+            ?? throw new UnauthorizedException("Invalid token.");
+
+        var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+        if (!result.Succeeded)
+            throw new BadRequestException(string.Join(" ", result.Errors.Select(e => e.Description)));
     }
 
     private async Task<AuthResponse> BuildResponseAsync(ApplicationUser user)
