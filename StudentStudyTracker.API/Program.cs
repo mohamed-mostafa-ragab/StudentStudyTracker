@@ -18,6 +18,8 @@ namespace StudentStudyTracker.API
             builder.Services.AddInfrastructure(builder.Configuration);
             var jwt = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()!;
 
+            if (string.IsNullOrWhiteSpace(jwt.Key) || jwt.Key.Length < 32)
+                throw new InvalidOperationException("Jwt:Key must be set (32+ characters) in User Secrets.");
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

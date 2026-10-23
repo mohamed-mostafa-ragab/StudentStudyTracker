@@ -24,6 +24,7 @@ namespace StudentStudyTracker.Infrastructure
             services.Configure<JwtSettings>(configuration.GetSection("Jwt"));
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IYearLevelService, YearLevelService>();
+            services.AddScoped<ISubjectService, SubjectService>();
             return services;
         }
     }
