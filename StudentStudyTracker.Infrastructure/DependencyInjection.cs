@@ -25,6 +25,11 @@ namespace StudentStudyTracker.Infrastructure
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IYearLevelService, YearLevelService>();
             services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IChapterService, ChapterService>();
+            services.AddScoped<ILessonService, LessonService>();
+            services.AddScoped<IProgressService, ProgressService>();
+            services.AddScoped<IWeeklyPlanService, WeeklyPlanService>();
+            services.AddScoped<IDashboardService, DashboardService>();
             return services;
         }
     }

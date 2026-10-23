@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using StudentStudyTracker.Application.DTOs.Subject;
 using StudentStudyTracker.Domain.Constants;
-
+using StudentStudyTracker.Application.Interfaces;
+using StudentStudyTracker.Application.DTOs.Curriculum;
+using StudentStudyTracker.Application.DTOs.Subject;
 namespace StudentStudyTracker.API.Controllers.Admin;
 
 [ApiController]

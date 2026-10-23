@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace StudentStudyTracker.Application.DTOs.Subject
+namespace StudentStudyTracker.Application.DTOs.Curriculum
 {
     public class SaveSubjectRequest
     {

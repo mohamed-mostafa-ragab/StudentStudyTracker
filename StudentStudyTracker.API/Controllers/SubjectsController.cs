@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using StudentStudyTracker.Application.DTOs.Subject;
 namespace StudentStudyTracker.API.Controllers;
+
+using StudentStudyTracker.Application.DTOs.Curriculum;
+using StudentStudyTracker.Application.DTOs.Subject;
+using StudentStudyTracker.Application.Interfaces;
 
 [ApiController]
 [Route("api/year-levels/{yearLevelId:int}/subjects")]

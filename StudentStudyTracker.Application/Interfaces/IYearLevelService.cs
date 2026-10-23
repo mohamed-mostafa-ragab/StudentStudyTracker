@@ -1,4 +1,4 @@
-﻿using StudentStudyTracker.Application.DTOs.Curriculum;
+﻿using StudentStudyTracker.Application.DTOs.Curriculum.YearLevel;
 
 namespace StudentStudyTracker.Application.Interfaces;
 

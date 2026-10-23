@@ -1,4 +1,6 @@
-﻿namespace StudentStudyTracker.Domain.Entities
+﻿using StudentStudyTracker.Domain.Enums;
+
+namespace StudentStudyTracker.Domain.Entities
 {
     public class StudentLessonProgress
     {
@@ -11,5 +13,18 @@
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public Lesson Lesson { get; set; } = null!;
+        public LessonStatus Status
+        {
+            get
+            {
+                var done = (HasAttended ? 1 : 0) + (HasStudied ? 1 : 0) + (HasCompletedExercises ? 1 : 0);
+                return done switch
+                {
+                    0 => LessonStatus.NotStarted,
+                    3 => LessonStatus.Completed,
+                    _ => LessonStatus.InProgress
+                };
+            }
+        }
     }
 }

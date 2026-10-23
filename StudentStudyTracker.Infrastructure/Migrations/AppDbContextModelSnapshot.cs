@@ -173,7 +173,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AcademicYearLevels");
+                    b.ToTable("AcademicYearLevels", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.Chapter", b =>
@@ -202,7 +202,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Chapters");
+                    b.ToTable("Chapters", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.Lesson", b =>
@@ -231,7 +231,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
 
                     b.HasIndex("ChapterId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.StudentLessonProgress", b =>
@@ -272,7 +272,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                     b.HasIndex("StudentId", "LessonId")
                         .IsUnique();
 
-                    b.ToTable("StudentLessonProgresses");
+                    b.ToTable("StudentLessonProgresses", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.Subject", b =>
@@ -301,7 +301,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
 
                     b.HasIndex("AcademicYearLevelId");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.WeeklyPlan", b =>
@@ -327,7 +327,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                     b.HasIndex("StudentId", "WeekStartDate")
                         .IsUnique();
 
-                    b.ToTable("WeeklyPlans");
+                    b.ToTable("WeeklyPlans", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Domain.Entities.WeeklyPlanItem", b =>
@@ -367,7 +367,7 @@ namespace StudentStudyTracker.Infrastructure.Migrations
                     b.HasIndex("WeeklyPlanId", "LessonId", "Type")
                         .IsUnique();
 
-                    b.ToTable("WeeklyPlanItems");
+                    b.ToTable("WeeklyPlanItems", (string)null);
                 });
 
             modelBuilder.Entity("StudentStudyTracker.Infrastructure.Identity.ApplicationUser", b =>

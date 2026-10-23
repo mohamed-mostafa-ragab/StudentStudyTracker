@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentStudyTracker.Application.DTOs.Curriculum;
+namespace StudentStudyTracker.Application.DTOs.Curriculum.YearLevel;
 
 public class SaveYearLevelRequest
 {

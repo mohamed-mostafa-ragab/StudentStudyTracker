@@ -21,6 +21,7 @@ namespace StudentStudyTracker.Infrastructure.Configurations
                 .WithMany()
                 .HasForeignKey(slp => slp.StudentId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.Ignore(slp => slp.Status);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using StudentStudyTracker.Application.DTOs.Subject;
+﻿using StudentStudyTracker.Application.DTOs.Curriculum;
+using StudentStudyTracker.Application.DTOs.Subject;
+namespace StudentStudyTracker.Application.Interfaces;
 
 public interface ISubjectService
 {
