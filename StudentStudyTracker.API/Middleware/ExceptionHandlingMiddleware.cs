@@ -26,6 +26,7 @@ namespace StudentStudyTracker.API.Middleware
                     ConflictException => StatusCodes.Status409Conflict,
                     UnauthorizedException => StatusCodes.Status401Unauthorized,
                     BadRequestException => StatusCodes.Status400BadRequest,
+                    NotFoundException => StatusCodes.Status404NotFound,
                     _ => StatusCodes.Status500InternalServerError
                 };
 
